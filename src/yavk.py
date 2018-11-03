@@ -10,4 +10,9 @@ if __name__ == '__main__':
 		exit()
 
 	user = vk_user(sys.argv[1], sys.argv[2])
-	user.make_post("Hello!")
+	audio_list = user.get_audio_list()
+
+	for i in range(10):
+		print(audio_list[i]['title'])
+
+	exit()
