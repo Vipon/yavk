@@ -6,6 +6,7 @@ class vk_user:
 	__vk_session
 	__vk
 	__vk_audio
+	__audio_list
 	"""
 
 	def __init__(self, login = '', password = ''):
@@ -29,4 +30,33 @@ class vk_user:
 
 	def get_audio_list(self):
 
-		return self.__vk_audio.get()
+		try:
+			self.__audio_list
+		except AttributeError:
+			self.__audio_list = self.__vk_audio.get()
+
+		return self.__audio_list
+
+
+	def print_audio_list(self):
+
+		try:
+			self.__audio_list
+		except AttributeError:
+			self.__audio_list = self.__vk_audio.get()
+
+		for entry in self.__audio_list:
+			print('Owner', entry['owner_id'], 'Artist:', entry['artist'],'Title:', entry['title'])
+
+
+	def search_audio(self, templ=''):
+
+		try:
+			self.__audio_list
+		except AttributeError:
+			self.__audio_list = self.__vk_audio.get()
+
+		artists = [track for track in self.__audio_list if templ in track['artist']]
+		titles = [track for track in self.__audio_list if templ in track['title']]
+
+		return [artists, titles]

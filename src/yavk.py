@@ -11,8 +11,16 @@ if __name__ == '__main__':
 
 	user = vk_user(sys.argv[1], sys.argv[2])
 	audio_list = user.get_audio_list()
+	print('I have', len(audio_list), 'audios.')
 
-	for i in range(10):
-		print(audio_list[i]['title'])
+	print('Just audio list:')
+	user.print_audio_list()
+
+	print('\n\nSearch in audio list:')
+	[artists, titles] = user.search_audio('One')
+	for entry in artists:
+		print('Artist:', entry['artist'],'Title:', entry['title'])
+	for entry in titles:
+		print('Artist:', entry['artist'],'Title:', entry['title'])
 
 	exit()
