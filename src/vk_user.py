@@ -1,6 +1,7 @@
 import vk_api
 from vk_api.audio import VkAudio
 
+
 class vk_user:
 	"""
 	__vk_session

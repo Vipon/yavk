@@ -1,5 +1,6 @@
 import sys
 from vk_user import *
+from vk_music_play import *
 
 
 if __name__ == '__main__':
@@ -10,17 +11,15 @@ if __name__ == '__main__':
 		exit()
 
 	user = vk_user(sys.argv[1], sys.argv[2])
-	audio_list = user.get_audio_list()
-	print('I have', len(audio_list), 'audios.')
-
-	print('Just audio list:')
-	user.print_audio_list()
 
 	print('\n\nSearch in audio list:')
 	[artists, titles] = user.search_audio('One')
 	for entry in artists:
-		print('Artist:', entry['artist'],'Title:', entry['title'])
+		print('Artist:', entry['artist'],'Title:', entry['title'], 'Url:', vk_music_play.get_audio_url(entry))
+		vk_music_play.download_audio(entry)
 	for entry in titles:
-		print('Artist:', entry['artist'],'Title:', entry['title'])
+		print('Artist:', entry['artist'],'Title:', entry['title'], 'Url:', vk_music_play.get_audio_url(entry))
+		vk_music_play.download_audio(entry)
+
 
 	exit()
