@@ -1,7 +1,9 @@
 import os
+import sys
 from vk_user import *
 from urllib.request import urlopen
-
+from PyQt5.QtCore import *
+from PyQt5.QtMultimedia import *
 
 class vk_music_play:
 
@@ -26,3 +28,20 @@ class vk_music_play:
 		localfile.close()
 
 		remotefile.close()
+
+
+	def play_audio(audio):
+
+		app = QCoreApplication(sys.argv)
+
+		playlist = QMediaPlaylist()
+		url = QUrl.fromLocalFile('.Downloads/One.mp3')
+		playlist.addMedia(QMediaContent(url))
+		playlist.setPlaybackMode(QMediaPlaylist.Loop)
+
+		player = QMediaPlayer()
+		player.setPlaylist(playlist)
+		player.setVolume(60)
+		player.play()
+
+		app.exec()

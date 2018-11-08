@@ -1,3 +1,4 @@
 *.pyc
 *.mp3
+.DS_Store
 vk_config.v2.json

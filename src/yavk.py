@@ -16,10 +16,14 @@ if __name__ == '__main__':
 	[artists, titles] = user.search_audio('One')
 	for entry in artists:
 		print('Artist:', entry['artist'],'Title:', entry['title'], 'Url:', vk_music_play.get_audio_url(entry))
-		vk_music_play.download_audio(entry)
+		#vk_music_play.download_audio(entry)
 	for entry in titles:
 		print('Artist:', entry['artist'],'Title:', entry['title'], 'Url:', vk_music_play.get_audio_url(entry))
-		vk_music_play.download_audio(entry)
+		#vk_music_play.download_audio(entry)
+		vk_music_play.play_audio(entry)
 
+	i = int(0)
+	while True:
+		i += 1
 
 	exit()
